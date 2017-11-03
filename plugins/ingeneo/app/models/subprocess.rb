@@ -1,4 +1,4 @@
-class Microprocess < ActiveRecord::Base
+class Subprocess < ActiveRecord::Base
   include Redmine::SafeAttributes
 
   safe_attributes :macroprocess_id, :name, :internal_code

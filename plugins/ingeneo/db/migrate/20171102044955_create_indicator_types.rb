@@ -1,7 +1,7 @@
 class CreateIndicatorTypes < ActiveRecord::Migration
   def change
     create_table :indicator_types do |t|
-      t.integer :microprocess_id, null: false
+      t.integer :subprocess_id, null: false
       t.integer :data_source_id, null: false
       t.string :name, null: false
       t.integer :active, null: false

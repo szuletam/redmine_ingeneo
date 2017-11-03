@@ -3,5 +3,5 @@ class Macroprocess < ActiveRecord::Base
 
   safe_attributes :name
   validates_presence_of :name
-  has_many :microprocesses
+  has_many :subprocesses
 end
