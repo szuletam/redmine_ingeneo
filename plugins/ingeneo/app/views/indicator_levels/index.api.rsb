@@ -1,0 +1,15 @@
+api.array :indicator_levels, api_meta(:total_count => @indicator_levels.size) do
+  @indicator_levels.each do |indicator_level|
+    api.indicator_level do
+      api.id indicator_level.id
+      api.service_id (indicator_level.service_id)
+      api.service_name (indicator_level.service.name)
+      api.subservice_id (indicator_level.subservice_id)
+      api.subservice_name (indicator_level.subservice.name)
+      api.application_id (indicator_level.application_id ? indicator_level.application_id : nil)
+      api.application_name (indicator_level.application_id ? indicator_level.application.name : nil)
+      api.app_module_id (indicator_level.app_module_id ? indicator_level.app_module_id : nil)
+      api.app_module_name (indicator_level.app_module_id ? indicator_level.app_module.name : nil)
+    end
+  end
+end

@@ -1,0 +1,74 @@
+
+<%= fields_for :indicator, @indicator do |f| %>
+
+
+
+    <br>
+
+    <table width="80%" class="table-border">
+      <tr>
+        <th></th>
+        <th></th>
+        <th><%= l(:field_value_a) %></th>
+        <th><%= l(:field_value_b) %></th>
+        <th><%= l(:field_indicator) %></th>
+        <th><%= l(:field_weight) %></th>
+        <th><%= l(:field_external_indicator) %></th>
+      </tr>
+      <tr>
+        <th><%= l(:field_service) %></th>
+        <td><%= select_tag :service_id, options_for_select(Service.order('name ASC').map{|s| [s.name, s.id]}),:include_blank => true  %></td>
+        <td><%= text_field_tag :value_service_a, @indicator.value_service_a, :size => 13 %></td>
+        <td><%= text_field_tag :value_service_b, @indicator.value_service_b, :size => 13 %></td>
+        <td><%= text_field_tag :indicator_service, @indicator.indicator_service, :size => 13 %></td>
+        <td><%= text_field_tag :service_weight, @indicator.service_weight, :disabled => true, :size => 13 %></td>
+        <td><%= text_field_tag :external_indicator_service, @indicator.external_indicator_service, :disabled => true, :size => 13 %></td>
+      </tr>
+      <tr>
+        <th><%= l(:field_subservice) %></th>
+        <td><%= select_tag :subservice_id, options_for_select(Subservice.order('name ASC').map{|s| [s.name, s.id]}),:include_blank => true  %></td>
+        <td><%= text_field_tag :value_subservice_a, @indicator.value_subservice_a, :size => 13  %></td>
+        <td><%= text_field_tag :value_subservice_b, @indicator.value_subservice_b, :size => 13  %></td>
+        <td><%= text_field_tag :indicator_subservice, @indicator.indicator_subservice, :size => 13  %></td>
+        <td><%= text_field_tag :subservice_weight, @indicator.subservice_weight, :disabled => true, :size => 13  %></td>
+        <td><%= text_field_tag :external_indicator_subservice, @indicator.external_indicator_subservice, :disabled => true, :size => 13  %></td>
+      </tr>
+      <tr>
+        <th><%= l(:field_application) %></th>
+        <td><%= select_tag :application_id, options_for_select(Application.order('name ASC').map{|s| [s.name, s.id]}),:include_blank => true  %></td>
+        <td><%= text_field_tag :value_application_a, @indicator.value_application_a, :size => 13  %></td>
+        <td><%= text_field_tag :value_application_b, @indicator.value_application_b, :size => 13  %></td>
+        <td><%= text_field_tag :indicator_application, @indicator.indicator_application, :size => 13  %></td>
+        <td><%= text_field_tag :application_weight, @indicator.application_weight, :disabled => true, :size => 13  %></td>
+        <td><%= text_field_tag :external_indicator_application, @indicator.external_indicator_application, :disabled => true, :size => 13  %></td>
+      </tr>
+      <tr>
+        <th><%= l(:field_module) %></th>
+        <td><%= select_tag :app_module_id, options_for_select(AppModule.order('name ASC').map{|s| [s.name, s.id]}),:include_blank => true  %></td>
+        <td><%= text_field_tag :value_module_a, @indicator.value_module_a, :size => 13  %></td>
+        <td><%= text_field_tag :value_module_b, @indicator.value_module_b, :size => 13  %></td>
+        <td><%= text_field_tag :indicator_module, @indicator.indicator_module, :size => 13  %></td>
+        <td><%= text_field_tag :module_weight, @indicator.module_weight, :disabled => true, :size => 13  %></td>
+        <td><%= text_field_tag :external_indicator_module, @indicator.external_indicator_module, :disabled => true, :size => 13  %></td>
+      </tr>
+    </table>
+
+    <br>
+
+    <table width="80%" class="table-border">
+      <tr>
+        <th colspan="3"><%= l(:label_analysis) %>:</th>
+      </tr>
+      <tr>
+        <th><%= l(:label_analysis_1) %>:</th>
+        <th><%= l(:label_analysis_2) %>:</th>
+        <th><%= l(:label_analysis_3) %>:</th>
+      </tr>
+      <tr>
+        <td><%= text_area_tag :analysis_a, @indicator.analysis_a, :cols => 10, :rows => 5%></td>
+        <td><%= text_area_tag :analysis_b, @indicator.analysis_b, :cols => 10, :rows => 5%></td>
+        <td><%= text_area_tag :analysis_c, @indicator.analysis_c, :cols => 10, :rows => 5%></td>
+      </tr>
+    </table>
+
+<% end %>

@@ -1,0 +1,8 @@
+api.array :indicator_types, api_meta(:total_count => @indicator_types.size) do
+  @indicator_types.each do |indicator_type|
+    api.indicator_type do
+      api.id indicator_type.id
+      api.name indicator_type.name
+    end
+  end
+end
