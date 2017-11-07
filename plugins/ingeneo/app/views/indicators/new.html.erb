@@ -1,39 +1,35 @@
 <style>
-    .table-border td, .table-border th{
+  .table-border td, .table-border th{
         border: 1px solid;
     }
     .table-border th{
         font-weight: bold;
     }
 </style>
-<%= title l(:label_new_indicator) %>
+<%= title l(:label_management_indicators) %>
 
 <div class="box tabular">
 
-  <table width="80%" class="table-border">
+  <h3><%= l(:label_search_indicators) %></h3>
+
+  <table width="80%">
     <tr>
-      <th colspan="3"><%= l(:field_subprocess)%>:</th>
-      <th colspan="3"><%= l(:field_indicator_type)%>:</th>
+      <td><%= l(:field_subprocess)%>: <%= select_tag :subprocess_id, options_for_select(Subprocess.order('name ASC').map{|s| [s.name, s.id]}), :onchange => "Indicator.loadIndicatorTypes(this)",:include_blank => true %></td>
+      <td><%= l(:field_indicator_type)%>: <%= select_tag :indicator_type_id, {} %></td>
     </tr>
     <tr>
-      <td colspan="3">
-        <%= select_tag :subprocess_id, options_for_select(Subprocess.order('name ASC').map{|s| [s.name, s.id]}), :onchange => "Indicator.loadIndicatorTypes(this)",:include_blank => true %>
-      </td>
-      <td colspan="3">
-        <%= select_tag :indicator_type_id, {}, :onchange => "Indicator.loadIndicatorLevels(this)" %>
-      </td>
+      <td><%= l(:field_year)%>: <%= select_tag :year_id, options_for_select(Year.order('name ASC').map{|s| [s.name, s.id]}),:include_blank => true %></td>
+      <td><%= l(:field_month)%>: <%= select_tag :month_id, options_for_select(Month.order('name ASC').map{|s| [s.name, s.id]}),:include_blank => true %></td>
+      <td><%= l(:field_week)%>:<%= select_tag :week_id, options_for_select(Week.order('name ASC').map{|s| [s.name, s.id]}),:include_blank => true %></td>
     </tr>
     <tr>
-      <th colspan="2"><%= l(:field_year)%>:</th>
-      <th colspan="2"><%= l(:field_month)%>:</th>
-      <th colspan="2"><%= l(:field_week)%>:</th>
-    </tr>
-    <tr>
-      <td colspan="2"><%= select_tag :year_id, options_for_select(Year.order('name ASC').map{|s| [s.name, s.id]}),:include_blank => true %></td>
-      <td colspan="2"><%= select_tag :month_id, options_for_select(Month.order('name ASC').map{|s| [s.name, s.id]}),:include_blank => true %></td>
-      <td colspan="2"><%= select_tag :week_id, options_for_select(Week.order('name ASC').map{|s| [s.name, s.id]}),:include_blank => true %></td>
+      <td><button onclick="Indicator.loadIndicatorLevels(); Indicator.loadIndicators()"><%= l(:label_search) %></button></td>
     </tr>
   </table>
+
+  <br>
+
+  <h3><%= l(:label_indicator_levels) %></h3>
 
   <table width="80%" class="table-border">
     <thead>
@@ -48,6 +44,28 @@
     <tbody id="tbody-indicator-levels">
     </tbody>
   </table>
+
+  <br>
+
+  <h3><%= l(:label_current_indicators) %></h3>
+
+  <table width="80%" class="table-border">
+    <thead>
+    <tr>
+      <th><%= l(:field_service) %></th>
+      <th><%= l(:field_subservice) %></th>
+      <th><%= l(:field_application) %></th>
+      <th><%= l(:field_module) %></th>
+      <th><%= l(:field_week) %></th>
+    </tr>
+    </thead>
+    <tbody id="tbody-indicators">
+    </tbody>
+  </table>
+
+
+  <div id="ajax-modal" style="display:none;">
+  </div>
 
 </div>
 

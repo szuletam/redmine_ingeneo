@@ -6,7 +6,7 @@ Redmine::Plugin.register :ingeneo do
   url ''
   author_url ''
   
-  menu :admin_menu, :indicators, {controller: 'indicators', action: 'index'}, :caption => :label_indicators, :html => {:class => 'icon icon-ind-calidad'}
+  menu :top_menu, :indicators, {controller: 'indicators', action: 'index'}, :caption => :label_indicators
 
   Rails.configuration.to_prepare do
     WelcomeController.send(:include, WelcomePatch)
@@ -14,6 +14,10 @@ Redmine::Plugin.register :ingeneo do
 
   Rails.configuration.to_prepare do
     ApplicationHelper.send(:include, ApplicationHelperPatch)
+  end
+
+  Rails.configuration.to_prepare do
+    ApplicationController.send(:include, ApplicationControllerPatch)
   end
 
 

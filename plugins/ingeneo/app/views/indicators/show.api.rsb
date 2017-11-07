@@ -1,0 +1,3 @@
+api.indicator do
+  api.id @indicator.id
+end

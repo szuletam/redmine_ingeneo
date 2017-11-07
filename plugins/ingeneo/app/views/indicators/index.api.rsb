@@ -1,0 +1,17 @@
+api.array :indicators, api_meta(:total_count => @indicators.size) do
+  @indicators.each do |indicator|
+    api.indicator do
+      api.id indicator.id
+      api.service_id (indicator.service_id)
+      api.service_name (indicator.service.name)
+      api.subservice_id (indicator.subservice_id)
+      api.subservice_name (indicator.subservice.name)
+      api.application_id (indicator.application_id ? indicator.application_id : nil)
+      api.application_name (indicator.application_id ? indicator.application.name : nil)
+      api.app_module_id (indicator.app_module_id ? indicator.app_module_id : nil)
+      api.app_module_name (indicator.app_module_id ? indicator.app_module.name : nil)
+      api.week_id (indicator.week_id)
+      api.week_name (indicator.week.name)
+    end
+  end
+end

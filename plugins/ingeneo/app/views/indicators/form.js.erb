@@ -1,0 +1,3 @@
+
+$('#ajax-modal').html('<%= escape_javascript(render :partial => 'form') %>');
+App.showModal('ajax-modal', '<%= @indicator.new_record? ? l(:label_new_indicator) : "#{l(:field_indicator)} #{@indicator.id}" %>');

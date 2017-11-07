@@ -2,6 +2,10 @@
 en:
   label_quality_indicators: "Quality indicators"
   label_indicators: "Indicators"
+  label_search_indicators: "Search Indicators"
+  label_current_indicators: "Current Indicators"
+  label_indicator_levels: "Indicator Levels"
+  label_goal: "Goal"
   label_new_indicator: "New Indicator"
   label_quality_indicator_new: "New Quality Indicator"
   field_id_indicador: "Indicator"
@@ -28,6 +32,7 @@ en:
   field_value_a: "Value a"
   field_value_b: "Value b"
   field_indicator: "Indicator"
+  label_management_indicators: "Indicators Management"
   field_weight: "Weight"
   field_external_indicator: "Ext Indicator"
   field_service: "Service"

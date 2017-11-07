@@ -22,4 +22,11 @@ class Indicator < ActiveRecord::Base
 	belongs_to :year
 	belongs_to :month
 	belongs_to :week
+
+
+	def safe_attributes=(attrs, user=User.current)
+		return unless attrs.is_a?(Hash)
+		super(attrs, user)
+	end
+
 end
